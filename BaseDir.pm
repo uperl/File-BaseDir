@@ -11,7 +11,7 @@ our @EXPORT_OK = qw(
 	xdg_config_home xdg_config_dirs xdg_config_files
 	xdg_cache_home
 );
-our $VERSION = 0.01;
+our $VERSION = 0.02;
 
 my $rootdir = File::Spec->rootdir();
 
@@ -71,7 +71,7 @@ __END__
 
 =head1 NAME
 
-File::BaseDir - utility for 
+File::BaseDir - use the freedesktop basedir spec
 
 =head1 SYNOPSIS
 

@@ -1,5 +1,9 @@
 Revision history for Perl extension File::BaseDir.
 
+0.02  Thu Sep  4 2003
+        - forgot to remove h2xs default "use 5.008" tag :(
+	emergency release it is ...
+
 0.01  Wed Sep  3 18:33:59 2003
 	- original version; created by h2xs 1.22 with options
 		-AX -n File::BaseDir
