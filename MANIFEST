@@ -1,8 +1,13 @@
-configure
-BaseDir.pm
+Build.PL
 Changes
+configure
+lib/File/BaseDir.pm
 Makefile.PL
-MANIFEST
+MANIFEST			This list of files
+META.yml
 README
-t/1.t
-t/some_file
+t/01_vars.t
+t/02_lookup.t
+t/03_OO.t
+t/04_pod_ok.t
+t/05_pod_cover.t

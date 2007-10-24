@@ -1,5 +1,15 @@
 Revision history for Perl extension File::BaseDir.
 
+0.03  Wed Oct 24 2007
+	- Added lookup methods for files and dirs:
+		data_home, data_files, data_dirs,
+		config_home, config_files, config_dirs & cache_home;
+		suggested by Matisse Enzer
+	- Deprecated xdg_data_files and xdg_config_files;
+		suggested by Michael Schwern
+	- Added a bit of Win32 support
+	- Extended tests to full coverage
+
 0.02  Thu Sep  4 2003
         - forgot to remove h2xs default "use 5.008" tag :(
 	emergency release it is ...

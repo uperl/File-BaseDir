@@ -1,0 +1,24 @@
+---
+name: File-BaseDir
+version: 0.03
+author:
+  - 'Jaap Karssenberg <pardus@cpan.org>'
+abstract: Use the Freedesktop.org base directory specification
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+requires:
+  Carp: 0
+  Exporter: 0
+  File::Spec: 0
+build_requires:
+  Module::Build: 0.24
+  Test::More: 0
+provides:
+  File::BaseDir:
+    file: lib/File/BaseDir.pm
+    version: 0.03
+generated_by: Module::Build version 0.2806
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
