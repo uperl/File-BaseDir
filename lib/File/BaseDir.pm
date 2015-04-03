@@ -5,7 +5,7 @@ use Carp;
 require File::Spec;
 require Exporter;
 
-our $VERSION = 0.03;
+our $VERSION = 0.04;
 
 our @ISA = qw(Exporter);
 our %EXPORT_TAGS = (
@@ -34,7 +34,8 @@ if ($^O eq 'MSWin32') {
 }
 my $home = $ENV{HOME};
 unless ($home) {
-	warn "WARNING: HOME is not set, using root: $rootdir\n";
+	# Default to  operating system's home dir. NOTE: web applications may not have $ENV{HOME} assigned,
+	# so don't issue a warning. See RT bug #41744
 	$home = $rootdir;
 }
 
@@ -111,7 +112,7 @@ sub _find_files {
 		return grep { &$type( $_ ) && -r $_ }
 		       map  { File::Spec->catfile($_, @$file) } @_;
 	}
-	else { # prevent unnessecary stats by returning early
+	else { # prevent unnecessary stats by returning early
 		for (@_) {
 			my $path = File::Spec->catfile($_, @$file);
 			return $path if &$type($path) && -r $path;
@@ -263,19 +264,19 @@ Default is F<$HOME/.cache>.
 
 =head1 NON-UNIX PLATFORMS
 
-The use of L<File::Spec> ensures that all paths are returned in the apropriate
+The use of L<File::Spec> ensures that all paths are returned in the appropriate
 form for the current platform. On Windows this module will try to set C<$HOME>
 to a sensible value if it is not defined yet. On other platforms one can use
 e.g. L<File::HomeDir> to set $HOME before loading File::BaseDir.
 
 Please note that the specification is targeting Unix platforms only and
-will only have limited relevance on other platforms. Any platform dependend
-behavior in this module should be considerd an extension of the spec.
+will only have limited relevance on other platforms. Any platform dependent
+behavior in this module should be considered an extension of the spec.
 
 =head1 BACKWARDS COMPATIBILITY
 
 The methods C<xdg_data_files()> and C<xdg_config_files()> are exported for
-backwards compatibilty with version 0.02. They are identical to C<data_files()>
+backwards compatibility with version 0.02. They are identical to C<data_files()>
 and C<config_files()> respectively but without the C<wantarray> behavior.
 
 =head1 BUGS
@@ -289,6 +290,8 @@ Jaap Karssenberg || Pardus [Larus] E<lt>pardus@cpan.orgE<gt>
 Copyright (c) 2003, 2007 Jaap G Karssenberg. All rights reserved.
 This program is free software; you can redistribute it and/or
 modify it under the same terms as Perl itself.
+
+Currently being maintained by Kim Ryan
 
 =head1 SEE ALSO
 

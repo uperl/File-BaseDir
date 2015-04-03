@@ -1,5 +1,13 @@
 Revision history for Perl extension File::BaseDir.
 
+0.04 3 Apr 2015
+    Fix for RT bug #41744 . Remove warning message when $ENV{HOME} is not defined
+    Fix for RT bugs # 88502 and #54929, typos corrected
+	Fix for RT bug #41744 . Remove warning message when $ENV{HOME} is not defined
+    Fix for RT bugs #50343, added more functionality
+	Fixed some OS depedendancies in test suite.
+	
+
 0.03  Wed Oct 24 2007
 	- Added lookup methods for files and dirs:
 		data_home, data_files, data_dirs,

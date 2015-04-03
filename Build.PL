@@ -16,8 +16,7 @@ my $build = Module::Build->new(
 		'Module::Build'  => '0.24',
 		'Test::More'     => 0,
 	},
-	create_makefile_pl => 'passthrough',
-	#dynamic_config => 1,
+	create_makefile_pl => 'small',
 );
 
 $build->create_build_script;
