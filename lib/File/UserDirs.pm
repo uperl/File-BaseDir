@@ -4,7 +4,7 @@ use warnings FATAL => 'all';
 use IPC::System::Simple qw(capturex);
 use parent qw(Exporter);
 
-our $VERSION     = '0.04';
+our $VERSION     = '0.05';
 our %EXPORT_TAGS = (
     all => [
         qw(xdg_desktop_dir xdg_documents_dir xdg_download_dir xdg_music_dir

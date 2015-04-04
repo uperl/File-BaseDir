@@ -11,6 +11,7 @@ my $build = Module::Build->new(
 		'Carp'		=> 0,
 		'Exporter'	=> 0,
 		'File::Spec'	=> 0,
+        'IPC::System::Simple' => 0
 	},
 	build_requires => {
 		'Module::Build'  => '0.24',

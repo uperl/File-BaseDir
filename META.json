@@ -29,22 +29,23 @@
          "requires" : {
             "Carp" : "0",
             "Exporter" : "0",
-            "File::Spec" : "0"
+            "File::Spec" : "0",
+            "IPC::System::Simple" : "0"
          }
       }
    },
    "provides" : {
       "File::BaseDir" : {
          "file" : "lib/File/BaseDir.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       },
       "File::IconTheme" : {
          "file" : "lib/File/IconTheme.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       },
       "File::UserDirs" : {
          "file" : "lib/File/UserDirs.pm",
-         "version" : "0.04"
+         "version" : "0.05"
       }
    },
    "release_status" : "stable",
@@ -53,5 +54,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.04"
+   "version" : "0.05"
 }

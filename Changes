@@ -1,5 +1,8 @@
 Revision history for Perl extension File::BaseDir.
 
+0.05 4 Apr 2015
+    Added prerequsitie module to Build.PL
+
 0.04 3 Apr 2015
     Fix for RT bug #41744 . Remove warning message when $ENV{HOME} is not defined
     Fix for RT bugs # 88502 and #54929, typos corrected
