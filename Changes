@@ -1,5 +1,8 @@
 Revision history for Perl extension File::BaseDir.
 
+0.06 6 Apr 2015
+    Added prerequsitie module build_requires section of Build.PL
+
 0.05 4 Apr 2015
     Added prerequsitie module to Build.PL
 

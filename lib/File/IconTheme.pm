@@ -5,7 +5,7 @@ use File::BaseDir qw(data_dirs);
 require File::Spec;
 use parent qw(Exporter);
 
-our $VERSION   = '0.05';
+our $VERSION   = '0.06';
 our @EXPORT_OK = qw(xdg_icon_theme_search_dirs);
 
 sub xdg_icon_theme_search_dirs {

@@ -3,6 +3,7 @@ abstract: 'Use the Freedesktop.org base directory specification'
 author:
   - 'Jaap Karssenberg <pardus@cpan.org>'
 build_requires:
+  File::Which: '0'
   Module::Build: '0.24'
   Test::More: '0'
 configure_requires:
@@ -17,13 +18,13 @@ name: File-BaseDir
 provides:
   File::BaseDir:
     file: lib/File/BaseDir.pm
-    version: '0.05'
+    version: '0.06'
   File::IconTheme:
     file: lib/File/IconTheme.pm
-    version: '0.05'
+    version: '0.06'
   File::UserDirs:
     file: lib/File/UserDirs.pm
-    version: '0.05'
+    version: '0.06'
 requires:
   Carp: '0'
   Exporter: '0'
@@ -31,4 +32,4 @@ requires:
   IPC::System::Simple: '0'
 resources:
   license: http://dev.perl.org/licenses/
-version: '0.05'
+version: '0.06'

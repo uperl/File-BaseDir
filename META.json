@@ -16,6 +16,7 @@
    "prereqs" : {
       "build" : {
          "requires" : {
+            "File::Which" : "0",
             "Module::Build" : "0.24",
             "Test::More" : "0"
          }
@@ -37,15 +38,15 @@
    "provides" : {
       "File::BaseDir" : {
          "file" : "lib/File/BaseDir.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       },
       "File::IconTheme" : {
          "file" : "lib/File/IconTheme.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       },
       "File::UserDirs" : {
          "file" : "lib/File/UserDirs.pm",
-         "version" : "0.05"
+         "version" : "0.06"
       }
    },
    "release_status" : "stable",
@@ -54,5 +55,5 @@
          "http://dev.perl.org/licenses/"
       ]
    },
-   "version" : "0.05"
+   "version" : "0.06"
 }
