@@ -6,20 +6,21 @@ use File::UserDirs qw(:all);
 use File::BaseDir qw(config_home);
 use File::Spec::Functions qw(catfile);
 use File::Which qw(which);
+use File::Temp qw(tempdir);
 
 my $xdg_user_dir_installed = 0;
 if (which 'xdg-user-dir') {
     plan tests => 8;
-    $xdg_user_dir_installed = 0;
+    $xdg_user_dir_installed = 1;
 } else {
-    plan skip_all => '"xdg-user-dir" executable not found. Install package "xdg-user-dirs".';
+    plan skip_all => '"xdg-user-dir" executable not found. Install package "xdg-user-dirs".';    
     
 }
 
-my $udd = config_home('user-dirs.dirs');
-if (-e $udd) {
-    rename $udd, "$udd~" or die "could not make backup of $udd: $!";
-}
+my $temphomedir = tempdir(CLEANUP => 1);
+local $ENV{HOME} = $temphomedir;
+mkdir "$temphomedir/.config";
+my $udd = "$temphomedir/.config/user-dirs.dirs";
 
 open my $fh, '>', $udd or die "could not open $udd for writing: $!";
 print $fh <<'UDD';
@@ -42,13 +43,3 @@ is xdg_pictures_dir,    catfile($ENV{HOME}, 'Files/Images');
 is xdg_publicshare_dir, catfile($ENV{HOME}, 'public_html');
 is xdg_templates_dir,   catfile($ENV{HOME}, 'Files/Document templates');
 is xdg_videos_dir,      catfile($ENV{HOME}, 'Files/Video');
-
-END {
-    if ($xdg_user_dir_installed) {
-        if (-e "$udd~") {
-            rename "$udd~", $udd or die "could not restore backup of $udd: $!";
-        } else {
-            unlink $udd or die "could not delete $udd: $!";
-        }
-    }
-}

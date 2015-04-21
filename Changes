@@ -1,7 +1,10 @@
 Revision history for Perl extension File::BaseDir.
 
+0.07 21 Apr 2015
+    Use temporary files for 03_userdirs.t test, fix for RT bug 103805
+
 0.06 6 Apr 2015
-    Added prerequsitie module build_requires section of Build.PL
+    Added prerequsite module build_requires section of Build.PL
 
 0.05 4 Apr 2015
     Added prerequsitie module to Build.PL
