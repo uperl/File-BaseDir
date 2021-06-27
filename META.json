@@ -4,22 +4,20 @@
       "Jaap Karssenberg <pardus@cpan.org>"
    ],
    "dynamic_config" : 1,
-   "generated_by" : "Module::Build version 0.4208",
+   "generated_by" : "Module::Build version 0.4231",
    "license" : [
       "perl_5"
    ],
    "meta-spec" : {
       "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-      "version" : "2"
+      "version" : 2
    },
    "name" : "File-BaseDir",
    "prereqs" : {
       "build" : {
          "requires" : {
             "File::Temp" : "0",
-            "File::Which" : "0",
-            "Module::Build" : "0.24",
-            "Test::More" : "0"
+            "Module::Build" : "0.24"
          }
       },
       "configure" : {
@@ -33,6 +31,13 @@
             "Exporter" : "0",
             "File::Spec" : "0",
             "IPC::System::Simple" : "0"
+         }
+      },
+      "test" : {
+         "requires" : {
+            "File::Which" : "0",
+            "File::chdir" : "0",
+            "Test::More" : "0"
          }
       }
    },
@@ -57,5 +62,5 @@
       ]
    },
    "version" : "0.08",
-   "x_serialization_backend" : "JSON::PP version 2.27300"
+   "x_serialization_backend" : "JSON::PP version 4.06"
 }

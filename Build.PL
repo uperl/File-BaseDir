@@ -16,13 +16,14 @@ my $build = Module::Build->new(
 	},
 	build_requires => {
 		'Module::Build'  => '0.24',
-		'Test::More'     => 0,
-        'File::Which'     => 0,
-        'File::Temp'     => 0
-        
+        	'File::Temp'     => 0        
 	},
-	create_makefile_pl => 'small',
+	test_requires => {
+		'Test::More'      => 0,
+	        'File::Which'     => 0,
+	        'File::chdir'     => 0,
+	},
 );
-
+$build->add_to_cleanup('File-BaseDir-*');
 $build->create_build_script;
 
