@@ -1,6 +1,5 @@
-#!perl
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use Test::More;
 use File::UserDirs qw(:all);
 use File::BaseDir qw(config_home);

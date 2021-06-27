@@ -1,6 +1,5 @@
 Revision history for Perl extension File::BaseDir.
 
- - Make parent an explicit prereq
  - Tests can now be run in parallel or isolation safely (rt#199256)
 
 0.08 13 Mar 2018

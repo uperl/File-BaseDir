@@ -1,8 +1,9 @@
 package File::UserDirs;
+
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use IPC::System::Simple qw(capturex);
-use parent qw(Exporter);
+use Exporter qw( import );
 
 our $VERSION     = '0.08';
 our %EXPORT_TAGS = (

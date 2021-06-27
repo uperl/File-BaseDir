@@ -1,6 +1,5 @@
-#!perl
 use strict;
-use warnings FATAL   => 'all';
+use warnings;
 use Test::More;
 use Config;
 use File::IconTheme qw(xdg_icon_theme_search_dirs);

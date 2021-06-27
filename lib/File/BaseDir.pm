@@ -1,13 +1,12 @@
 package File::BaseDir;
 
 use strict;
-use Carp;
-require File::Spec;
-require Exporter;
+use warnings;
+use Exporter qw( import );
+use File::Spec;
 
 our $VERSION = 0.08;
 
-our @ISA = qw(Exporter);
 our %EXPORT_TAGS = (
 	vars => [ qw(
 		xdg_data_home xdg_data_dirs

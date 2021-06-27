@@ -1,3 +1,5 @@
+use strict;
+use warnings;
 use Test::More;
 
 use File::BaseDir qw/xdg_data_dirs/;
