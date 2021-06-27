@@ -8,6 +8,7 @@ my $build = Module::Build->new(
 	dist_author => 'Jaap Karssenberg <pardus@cpan.org>',
 	license => 'perl',
 	requires => {
+		'parent'	=> 0,
 		'Carp'		=> 0,
 		'Exporter'	=> 0,
 		'File::Spec'	=> 0,
