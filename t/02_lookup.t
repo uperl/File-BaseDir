@@ -3,6 +3,7 @@ use warnings;
 use Test::More tests => 17;
 use File::Spec;
 use lib 't/lib';
+use Config;
 use Helper qw( build_test_data );
 
 use_ok('File::BaseDir', qw/:lookup xdg_data_files xdg_config_files/);
@@ -26,7 +27,7 @@ my @file = (map File::Spec->catfile($root, @$_),
 $ENV{XDG_CONFIG_HOME} = 'foo';
 $ENV{XDG_CONFIG_DIRS} = 'bar';
 $ENV{XDG_DATA_HOME} = $root;
-$ENV{XDG_DATA_DIRS} = join ':', @dir;
+$ENV{XDG_DATA_DIRS} = join $Config{path_sep}, @dir;
 
 is(data_home(qw/t data test/), $file[0], 'data_home');
 is(data_files(qw/data test/), $file[0], 'data_files');
@@ -41,7 +42,7 @@ is_deeply([xdg_data_files(qw/test/)], \@file,
   'xdg_data_files - for backward compatibility');
 
 $ENV{XDG_CONFIG_HOME} = $root;
-$ENV{XDG_CONFIG_DIRS} = join ':', @dir;
+$ENV{XDG_CONFIG_DIRS} = join $Config{path_sep}, @dir;
 $ENV{XDG_DATA_HOME} = 'foo';
 $ENV{XDG_DATA_DIRS} = 'bar';
 

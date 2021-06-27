@@ -1,6 +1,7 @@
 use strict;
 use warnings;
 use Test::More tests => 12;
+use Config;
 
 use_ok('File::BaseDir', qw/:vars/);
 
@@ -17,7 +18,7 @@ $ENV{XDG_CONFIG_DIRS} = '';
 is_deeply( [xdg_config_dirs()],
            [ File::Spec->catdir($rootdir, qw/etc xdg/) ],
      'xdg_config_dirs default');
-$ENV{XDG_CONFIG_DIRS} = './t:foo:bar';
+$ENV{XDG_CONFIG_DIRS} = join $Config{path_sep}, qw/ t foo bar /;
 is_deeply( [xdg_config_dirs()],
            [File::Spec->catdir('.', 't'), 'foo', 'bar'],
      'xdg_data_dirs set');
@@ -33,7 +34,7 @@ is_deeply( [xdg_data_dirs()],
            [ File::Spec->catdir($rootdir, qw/usr local share/),
              File::Spec->catdir($rootdir, qw/usr share/)         ],
      'xdg_data_dirs default');
-$ENV{XDG_DATA_DIRS} = './t:foo:bar';
+$ENV{XDG_DATA_DIRS} = join $Config{path_sep}, qw/ t foo bar /;
 is_deeply( [xdg_data_dirs()],
            [File::Spec->catdir('.', 't'), 'foo', 'bar'],
      'xdg_data_dirs set');

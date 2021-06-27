@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use Exporter qw( import );
 use File::Spec;
+use Config;
 
 our $VERSION = 0.08;
 
@@ -73,7 +74,7 @@ sub xdg_config_dirs {
 sub xdg_cache_home { $ENV{XDG_CACHE_HOME} || $xdg_cache_home }
 
 sub _adapt {
-  map { File::Spec->catdir( split(/\//, $_) ) } split /[:;]/, shift;
+  map { File::Spec->catdir( split(/\//, $_) ) } split /\Q$Config{path_sep}\E/, shift;
     # ':' defined in the spec, but ';' is standard on win32
 }
 
