@@ -3,7 +3,7 @@ use warnings;
 use Test::More;
 use Config;
 use File::IconTheme qw(xdg_icon_theme_search_dirs);
-require File::Spec;
+use File::Spec;
 use File::Temp qw();
 
 if ($^O eq 'MSWin32') {
