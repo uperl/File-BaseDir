@@ -1,4 +1,5 @@
 use strict;
+use warnings;
 use Test::More tests => 12;
 
 use_ok('File::BaseDir', qw/:vars/);

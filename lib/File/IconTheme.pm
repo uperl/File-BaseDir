@@ -1,9 +1,10 @@
 package File::IconTheme;
+
 use strict;
-use warnings FATAL => 'all';
+use warnings;
 use File::BaseDir qw(data_dirs);
-require File::Spec;
-use parent qw(Exporter);
+use File::Spec;
+use Exporter qw( import );
 
 our $VERSION   = '0.08';
 our @EXPORT_OK = qw(xdg_icon_theme_search_dirs);
