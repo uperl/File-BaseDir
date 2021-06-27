@@ -15,7 +15,7 @@ my $build = Module::Build->new(
 	},
 	build_requires => {
 		'Module::Build'  => '0.24',
-        	'File::Temp'     => 0        
+        	'File::Temp'     => 0
 	},
 	test_requires => {
 		'Test::More'      => 0,

@@ -27,4 +27,4 @@ is_deeply
         @icondirs,
         '/usr/share/pixmaps'
     ];
-    
+
