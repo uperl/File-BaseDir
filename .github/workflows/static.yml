@@ -45,7 +45,7 @@ jobs:
       - name: Install-Dependencies
         run: |
           cip install
-          cip exec cpanm -n Test::Pod Test::Pod::Coverage
+          cip exec cpanm -n Test::Pod Test::Pod::Coverage Test2::V0 Test2::Tools::PerlCritic
 
       - name: Build + Test
         run: |
