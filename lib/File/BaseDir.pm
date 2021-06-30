@@ -33,7 +33,7 @@ if($^O eq 'MSWin32')
 else
 {
   *_rootdir = sub { File::Spec->rootdir };
-  *_home    = sub { $ENV{HOME} || File::Spec->rootdir };
+  *_home    = sub { $ENV{HOME} || eval { [getpwuid($>)]->[7] } || File::Spec->rootdir };
 }
 
 # OO method
