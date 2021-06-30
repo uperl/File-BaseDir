@@ -6,7 +6,6 @@ build_requires:
   File::Temp: '0'
   File::Which: '0'
   File::chdir: '0'
-  Module::Build: '0.24'
   Test::More: '0'
 configure_requires:
   Module::Build: '0.42'
@@ -29,7 +28,7 @@ provides:
     version: '0.08'
 requires:
   Carp: '0'
-  Exporter: '0'
+  Exporter: '5.57'
   File::Spec: '0'
   IPC::System::Simple: '0'
 resources:
