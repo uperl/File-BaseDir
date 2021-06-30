@@ -24,7 +24,7 @@ $ENV{XDG_DATA_DIRS} = $dirs[1] . $Config{path_sep} . $dirs[2];
 is_deeply
     [xdg_icon_theme_search_dirs],
     [grep {-d $_ && -r $_}
-        File::Spec->catfile($File::BaseDir::home, '.icons'),
+        File::Spec->catfile(File::BaseDir->_home, '.icons'),
         @icondirs,
         '/usr/share/pixmaps'
     ];
