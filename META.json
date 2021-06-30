@@ -14,12 +14,6 @@
    },
    "name" : "File-BaseDir",
    "prereqs" : {
-      "build" : {
-         "requires" : {
-            "File::Temp" : "0",
-            "Module::Build" : "0.24"
-         }
-      },
       "configure" : {
          "requires" : {
             "Module::Build" : "0.42"
@@ -28,13 +22,14 @@
       "runtime" : {
          "requires" : {
             "Carp" : "0",
-            "Exporter" : "0",
+            "Exporter" : "5.57",
             "File::Spec" : "0",
             "IPC::System::Simple" : "0"
          }
       },
       "test" : {
          "requires" : {
+            "File::Temp" : "0",
             "File::Which" : "0",
             "File::chdir" : "0",
             "Test::More" : "0"
