@@ -10,8 +10,9 @@ our $VERSION   = '0.08';
 our @EXPORT_OK = qw(xdg_icon_theme_search_dirs);
 
 sub xdg_icon_theme_search_dirs {
+
     return grep {-d $_ && -r $_}
-        File::Spec->catfile($File::BaseDir::home, '.icons'),
+        File::Spec->catfile(File::BaseDir->_home, '.icons'),
         data_dirs('icons'),
         '/usr/share/pixmaps';
 }

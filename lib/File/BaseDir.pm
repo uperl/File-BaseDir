@@ -25,59 +25,40 @@ our @EXPORT_OK = (
   map @$_, values %EXPORT_TAGS
 );
 
-our $home;
-our $rootdir;
-
 if($^O eq 'MSWin32')
 {
-  $rootdir = 'C:\\';  # File::Spec default depends on CWD
-  $home = $ENV{USERPROFILE} || $ENV{HOMEDRIVE}.$ENV{HOMEPATH};
+  *_rootdir = sub { 'C:\\' };
+  *_home    = sub { $ENV{USERPROFILE} || $ENV{HOMEDRIVE}.$ENV{HOMEPATH} || 'C:\\' };
 }
 else
 {
-  $rootdir = File::Spec->rootdir;
-  $home = $ENV{HOME};
+  *_rootdir = sub { File::Spec->rootdir };
+  *_home    = sub { $ENV{HOME} || File::Spec->rootdir };
 }
-
-unless ($home) {
-  # Default to  operating system's home dir. NOTE: web applications may not have $ENV{HOME} assigned,
-  # so don't issue a warning. See RT bug #41744
-  $home = $rootdir;
-}
-
-# Set defaults
-our $xdg_data_home = File::Spec->catdir($home, qw/.local share/);
-our @xdg_data_dirs = (
-  File::Spec->catdir($rootdir, qw/usr local share/),
-  File::Spec->catdir($rootdir, qw/usr share/),
-);
-our $xdg_config_home = File::Spec->catdir($home, '.config');
-our @xdg_config_dirs = ( File::Spec->catdir($rootdir, qw/etc xdg/) );
-our $xdg_cache_home = File::Spec->catdir($home, '.cache');
 
 # OO method
 sub new { bless \$VERSION, shift } # what else is there to bless ?
 
 # Variable methods
-sub xdg_data_home { $ENV{XDG_DATA_HOME} || $xdg_data_home }
+sub xdg_data_home { $ENV{XDG_DATA_HOME} || File::Spec->catdir(_home(), qw/.local share/) }
 
 sub xdg_data_dirs {
   ( $ENV{XDG_DATA_DIRS}
     ? _adapt($ENV{XDG_DATA_DIRS})
-    : @xdg_data_dirs
+    : (File::Spec->catdir(_rootdir(), qw/usr local share/), File::Spec->catdir(_rootdir(), qw/usr share/))
   )
 }
 
-sub xdg_config_home {$ENV{XDG_CONFIG_HOME} || $xdg_config_home }
+sub xdg_config_home {$ENV{XDG_CONFIG_HOME} || File::Spec->catdir(_home(), '.config') }
 
 sub xdg_config_dirs {
   ( $ENV{XDG_CONFIG_DIRS}
     ? _adapt($ENV{XDG_CONFIG_DIRS})
-    : @xdg_config_dirs
+    : File::Spec->catdir(_rootdir(), qw/etc xdg/)
   )
 }
 
-sub xdg_cache_home { $ENV{XDG_CACHE_HOME} || $xdg_cache_home }
+sub xdg_cache_home { $ENV{XDG_CACHE_HOME} || File::Spec->catdir(_home(), '.cache') }
 
 sub _adapt {
   map { File::Spec->catdir( split(/\//, $_) ) } split /\Q$Config{path_sep}\E/, shift;
