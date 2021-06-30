@@ -11,7 +11,7 @@ our @EXPORT_OK = qw(xdg_icon_theme_search_dirs);
 
 sub xdg_icon_theme_search_dirs {
     return grep {-d $_ && -r $_}
-        File::Spec->catfile($ENV{HOME}, '.icons'),
+        File::Spec->catfile($File::BaseDir::home, '.icons'),
         data_dirs('icons'),
         '/usr/share/pixmaps';
 }

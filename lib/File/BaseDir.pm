@@ -25,14 +25,20 @@ our @EXPORT_OK = (
   map @$_, values %EXPORT_TAGS
 );
 
-# Set root and home directories
-my $rootdir = File::Spec->rootdir();
-if ($^O eq 'MSWin32') {
-  $rootdir = 'C:\\'; # File::Spec default depends on CWD
-  $ENV{HOME} ||= $ENV{USERPROFILE} || $ENV{HOMEDRIVE}.$ENV{HOMEPATH};
-    # logic from File::HomeDir::Windows
+our $home;
+our $rootdir;
+
+if($^O eq 'MSWin32')
+{
+  $rootdir = 'C:\\';  # File::Spec default depends on CWD
+  $home = $ENV{USERPROFILE} || $ENV{HOMEDRIVE}.$ENV{HOMEPATH};
 }
-my $home = $ENV{HOME};
+else
+{
+  $rootdir = File::Spec->rootdir;
+  $home = $ENV{HOME};
+}
+
 unless ($home) {
   # Default to  operating system's home dir. NOTE: web applications may not have $ENV{HOME} assigned,
   # so don't issue a warning. See RT bug #41744
@@ -264,10 +270,10 @@ Default is F<$HOME/.cache>.
 
 =head1 NON-UNIX PLATFORMS
 
-The use of L<File::Spec> ensures that all paths are returned in the appropriate
-form for the current platform. On Windows this module will try to set C<$HOME>
-to a sensible value if it is not defined yet. On other platforms one can use
-e.g. L<File::HomeDir> to set $HOME before loading File::BaseDir.
+The use of L<File::Spec> ensures that all paths are returned in their native
+formats regardless of platform.  On Windows this module will use the native
+environment variables, rather than the default on UNIX (which is traditionally
+C<$HOME>).
 
 Please note that the specification is targeting Unix platforms only and
 will only have limited relevance on other platforms. Any platform dependent

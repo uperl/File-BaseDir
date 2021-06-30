@@ -2,6 +2,7 @@ use strict;
 use warnings;
 use Test::More;
 use Config;
+use File::BaseDir;
 use File::IconTheme qw(xdg_icon_theme_search_dirs);
 use File::Spec;
 use File::Temp qw();
@@ -23,7 +24,7 @@ $ENV{XDG_DATA_DIRS} = $dirs[1] . $Config{path_sep} . $dirs[2];
 is_deeply
     [xdg_icon_theme_search_dirs],
     [grep {-d $_ && -r $_}
-        File::Spec->catfile($ENV{HOME}, '.icons'),
+        File::Spec->catfile($File::BaseDir::home, '.icons'),
         @icondirs,
         '/usr/share/pixmaps'
     ];
