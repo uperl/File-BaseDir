@@ -5,7 +5,9 @@ use Config;
 
 use_ok('File::BaseDir', qw/:vars/);
 
+note "home = @{[ File::BaseDir->_home ]}";
 ok(File::BaseDir->_home, 'HOME defined');
+note "root = @{[ File::BaseDir->_rootdir ]}";
 ok(File::BaseDir->_rootdir, 'root defined');
 
 $ENV{XDG_CONFIG_HOME} = '';
