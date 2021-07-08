@@ -214,10 +214,15 @@ The methods `xdg_data_files()` and `xdg_config_files()` are exported for
 backwards compatibility with version 0.02. They are identical to `data_files()`
 and `config_files()` respectively but without the `wantarray` behavior.
 
-# AUTHORS
+# AUTHOR
 
-- Jaap Karssenberg || Pardus \[Larus\] <pardus@cpan.org>
-- Graham Ollis <plicease@cpan.org>
+Original author: Jaap Karssenberg || Pardus \[Larus\] <pardus@cpan.org>
+
+Current maintainer: Graham Ollis <plicease@cpan.org>
+
+Contributors:
+
+Kim Ryan <kimryan@cpan.org>
 
 # COPYRIGHT AND LICENSE
 
