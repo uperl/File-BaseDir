@@ -38,8 +38,8 @@ __END__
 
 =head1 SYNOPSIS
 
-    use File::UserDirs qw(:all);
-    print xdg_desktop_dir; # e.g. /home/user/Desktop
+ use File::UserDirs qw(:all);
+ print xdg_desktop_dir; # e.g. /home/user/Desktop
 
 =head1 DESCRIPTION
 
@@ -47,56 +47,66 @@ This module can be used to find directories as informally specified
 by the Freedesktop.org xdg-user-dirs software. This
 gives a mechanism to locate extra directories for media and documents files.
 
-=head1 INTERFACE
+=head1 FUNCTIONS
 
-=over
+May be exported on request.
+Also the group C<:all> is defined which exports all methods.
 
-=item C<xdg_desktop_dir>
+=head2 xdg_desktop_dir
+
+ my $dir = xdg_desktop_dir;
 
 Returns the desktop directory. Unless changed by the user,
 this is the directory F<Desktop> in the home directory.
 
-=item C<xdg_documents_dir>
+=head2 xdg_documents_dir
+
+ my $dir = xdg_documents_dir;
 
 Returns the documents directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_download_dir>
+=head2 xdg_download_dir
+
+ my $dir = xdg_download_dir;
 
 Returns the download directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_music_dir>
+=head2 xdg_music_dir
+
+ my $dir = xdg_music_dir;
 
 Returns the music directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_pictures_dir>
+=head2 xdg_pictures_dir
+
+ my $dir = xdg_pictures_dir;
 
 Returns the pictures directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_publicshare_dir>
+=head2 xdg_publicshare_dir
+
+ my $dir = xdg_publicshare_dir;
 
 Returns the public share directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_templates_dir>
+=head2 xdg_templates_dir
+
+ my $dir = xdg_templates_dir;
 
 Returns the templates directory. Unless changed by the user,
 this is the home directory.
 
-=item C<xdg_videos_dir>
+=head2 xdg_videos_dir
+
+ my $dir = xdg_videos_dir;
 
 Returns the videos directory. Unless changed by the user,
 this is the home directory.
-
-=back
-
-=head1 EXPORTS
-
-None by default, but any method can be exported on demand.
-Also the group C<:all> is defined which exports all methods.
 
 =head1 DIAGNOSTICS
 
@@ -115,19 +125,19 @@ The location of the directories can be specified by the user in the file
 F<$XDG_CONFIG_HOME/user-dirs.dirs>. It is a shell file setting a number of
 environment variables. To find the exact pathname from Perl, run:
 
-    use File::BaseDir qw(config_home);
-    print config_home('user-dirs.dirs');
+ use File::BaseDir qw(config_home);
+ print config_home('user-dirs.dirs');
 
 =head2 Example customised F<user-dirs.dirs>
 
-    XDG_DESKTOP_DIR="$HOME/Workspace"
-    XDG_DOCUMENTS_DIR="$HOME/Files"
-    XDG_DOWNLOAD_DIR="$HOME/Files/Downloads"
-    XDG_MUSIC_DIR="$HOME/Files/Audio"
-    XDG_PICTURES_DIR="$HOME/Files/Images"
-    XDG_PUBLICSHARE_DIR="$HOME/public_html"
-    XDG_TEMPLATES_DIR="$HOME/Files/Document templates"
-    XDG_VIDEOS_DIR="$HOME/Files/Video"
+ XDG_DESKTOP_DIR="$HOME/Workspace"
+ XDG_DOCUMENTS_DIR="$HOME/Files"
+ XDG_DOWNLOAD_DIR="$HOME/Files/Downloads"
+ XDG_MUSIC_DIR="$HOME/Files/Audio"
+ XDG_PICTURES_DIR="$HOME/Files/Images"
+ XDG_PUBLICSHARE_DIR="$HOME/public_html"
+ XDG_TEMPLATES_DIR="$HOME/Files/Document templates"
+ XDG_VIDEOS_DIR="$HOME/Files/Video"
 
 =head1 DEPENDENCIES
 
