@@ -24,104 +24,175 @@ This module forked from [File::MimeInfo](https://metacpan.org/pod/File::MimeInfo
 
 This module follows version 0.6 of BaseDir specification.
 
-# EXPORT
+# CONSTRUCTOR
 
-None by default, but all methods can be exported on demand.
-Also the groups ":lookup" and ":vars" are defined. The ":vars" group
-contains all routines with a "xdg\_" prefix; the ":lookup" group
-contains the routines to locate files and directories.
+## new
 
-# METHODS
+```perl
+my $bd = File::BaseDir->new;
+```
 
-- `new()`
+Simple constructor to allow calling functions as object oriented methods.
 
-    Simple constructor to allow Object Oriented use of this module.
+# FUNCTIONS
 
-## Lookup
+None of these are exported by default, but all functions can be exported
+by request.  Also the groups `:lookup` and `:vars` are defined.  The
+`:vars` group contains all the routines with a `xdg_` prefix. The
+`:lookup` group contains the routines to locate files and directories.
 
-The following methods are used to lookup files and folders in one of the
-search paths.
+## data\_home
 
-- `data_home(@PATH)`
+```perl
+my $path = data_home(@path);
+my $path = $bd->data_home(@path);
+```
 
-    Takes a list of file path elements and returns a new path by appending
-    them to the data home directory. The new path does not need to exist.
-    Use this when writing user specific application data.
+Takes a list of file path elements and returns a new path by appending
+them to the data home directory. The new path does not need to exist.
+Use this when writing user specific application data.
 
-    Example:
+Example:
 
-    ```
-    # data_home is: /home/USER/.local/share
-    $path = $bd->data_home('Foo', 'Bar', 'Baz');
-    # returns: /home/USER/.local/share/Foo/Bar/Baz
-    ```
+```
+# data_home is: /home/USER/.local/share
+$path = $bd->data_home('Foo', 'Bar', 'Baz');
+# returns: /home/USER/.local/share/Foo/Bar/Baz
+```
 
-- `data_dirs(@PATH)`
+## data\_dirs
 
-    Looks for directories specified by `@PATH` in the data home and
-    other data directories. Returns (possibly empty) list of readable
-    directories. In scalar context only the first directory found is
-    returned. Use this to lookup application data.
+```perl
+# :lookup
+my $dir = data_dirs(@path);
+my $dir = $bd->data_dirs(@path);
+my @dirs = data_dirs(@path);
+my @dirs = $bd->data_dirs(@path);
+```
 
-- `data_files(@PATH)`
+Looks for directories specified by `@path` in the data home and
+other data directories. Returns (possibly empty) list of readable
+directories. In scalar context only the first directory found is
+returned. Use this to lookup application data.
 
-    Looks for files specified by `@PATH` in the data home and other data
-    directories. Only returns files that are readable. In scalar context only
-    the first file found is returned. Use this to lookup application data.
+## data\_files
 
-- `config_home(@PATH)`
+```perl
+# :lookup
+my $file = data_files(@path);
+my $file = $bd->data_files(@path);
+my @files = data_files(@path);
+my @files = $bd->data_files(@path);
+```
 
-    Takes a list of path elements and appends them to the config home
-    directory returning a new path. The new path does not need to exist.
-    Use this when writing user specific configuration.
+Looks for files specified by `@path` in the data home and other data
+directories. Only returns files that are readable. In scalar context only
+the first file found is returned. Use this to lookup application data.
 
-- `config_dirs(@PATH)`
+## config\_home
 
-    Looks for directories specified by `@PATH` in the config home and
-    other config directories. Returns (possibly empty) list of readable
-    directories. In scalar context only the first directory found is
-    returned. Use this to lookup configuration.
+```perl
+# :lookup
+my $dir = config_home(@path);
+my $dir = $bd->config_home(@path);
+```
 
-- `config_files(@PATH)`
+Takes a list of path elements and appends them to the config home
+directory returning a new path. The new path does not need to exist.
+Use this when writing user specific configuration.
 
-    Looks for files specified by `@PATH` in the config home and other
-    config directories. Returns a (possibly empty) list of files that
-    are readable. In scalar context only the first file found is returned.
-    Use this to lookup configuration.
+## config\_dirs
 
-- `cache_home(@PATH)`
+```perl
+# :lookup
+my $dir = config_dirs(@path);
+my $dir = $bd->config_dirs(@path);
+my @dirs = config_dirs(@path);
+my @dirs = $bd->config_dirs(@path);
+```
 
-    Takes a list of path elements and appends them to the cache home
-    directory returning a new path. The new path does not need to exist.
+Looks for directories specified by `@path` in the config home and
+other config directories. Returns (possibly empty) list of readable
+directories. In scalar context only the first directory found is
+returned. Use this to lookup configuration.
 
-## Variables
+## config\_files
 
-The following methods only returns the value of one of the XDG variables.
+```perl
+# :lookup
+my $file = config_files(@path);
+my $file = $bd->config_files(@path);
+my @files = config_files(@path);
+my @files = $bd->config_files(@path);
+```
 
-- `xdg_data_home`
+Looks for files specified by `@path` in the config home and other
+config directories. Returns a (possibly empty) list of files that
+are readable. In scalar context only the first file found is returned.
+Use this to lookup configuration.
 
-    Returns either `$ENV{XDG_DATA_HOME}` or it's default value.
-    Default is `$HOME/.local/share`.
+## cache\_home
 
-- `xdg_data_dirs`
+```perl
+# :lookup
+my $dir = cache_home(@path);
+my $dir = $bd->cache_home(@path);
+```
 
-    Returns either `$ENV{XDG_DATA_DIRS}` or it's default value as list.
-    Default is `/usr/local/share`, `/usr/share`.
+Takes a list of path elements and appends them to the cache home
+directory returning a new path. The new path does not need to exist.
 
-- `xdg_config_home`
+## xdg\_data\_home
 
-    Returns either `$ENV{XDG_CONFIG_HOME}` or it's default value.
-    Default is `$HOME/.config`.
+```perl
+# :var
+my $dir = xdg_data_home;
+my $dir = $bd->xdg_data_home;
+```
 
-- `xdg_config_dirs`
+Returns either `$ENV{XDG_DATA_HOME}` or it's default value.
+Default is `$HOME/.local/share`.
 
-    Returns either `$ENV{XDG_CONFIG_DIRS}` or it's default value as list.
-    Default is `/etc/xdg`.
+## xdg\_data\_dirs
 
-- `xdg_cache_home`
+```perl
+# :var
+my @dirs = xdg_data_dirs;
+my @dirs = $bd->xdg_data_dirs;
+```
 
-    Returns either `$ENV{XDG_CACHE_HOME}` or it's default value.
-    Default is `$HOME/.cache`.
+Returns either `$ENV{XDG_DATA_DIRS}` or it's default value as list.
+Default is `/usr/local/share`, `/usr/share`.
+
+## xdg\_config\_home
+
+```perl
+my $dir = xdg_config_home;
+my $dir = $bd->xdg_config_home;
+```
+
+Returns either `$ENV{XDG_CONFIG_HOME}` or it's default value.
+Default is `$HOME/.config`.
+
+## xdg\_config\_dirs
+
+```perl
+my @dirs = xdg_config_dirs;
+my @dirs = $bd->xdg_config_dirs;
+```
+
+Returns either `$ENV{XDG_CONFIG_DIRS}` or it's default value as list.
+Default is `/etc/xdg`.
+
+## xdg\_cache\_home
+
+```perl
+my $dir = xdg_cache_home;
+my $dir = $bd->xdg_cache_home;
+```
+
+Returns either `$ENV{XDG_CACHE_HOME}` or it's default value.
+Default is `$HOME/.cache`.
 
 # NON-UNIX PLATFORMS
 
