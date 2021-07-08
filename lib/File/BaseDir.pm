@@ -2,11 +2,12 @@ package File::BaseDir;
 
 use strict;
 use warnings;
-use Exporter qw( import );
+use Exporter 5.57 qw( import );
 use File::Spec;
 use Config;
 
-our $VERSION = 0.08;
+# ABSTRACT: Use the Freedesktop.org base directory specification
+# VERSION
 
 our %EXPORT_TAGS = (
   vars => [ qw(
@@ -116,10 +117,6 @@ sub _file { -f $_[0] }
 
 __END__
 
-=head1 NAME
-
-File::BaseDir - Use the Freedesktop.org base directory specification
-
 =head1 SYNOPSIS
 
   use File::BaseDir qw/xdg_data_files/;
@@ -133,7 +130,7 @@ This module can be used to find directories and files as specified
 by the Freedesktop.org Base Directory Specification. This specifications
 gives a mechanism to locate directories for configuration, application data
 and cache data. It is suggested that desktop applications for e.g. the
-Gnome, KDE or Xfce platforms follow this layout. However, the same layout can
+GNOME, KDE or Xfce platforms follow this layout. However, the same layout can
 just as well be used for non-GUI applications.
 
 This module forked from L<File::MimeInfo>.
@@ -266,21 +263,4 @@ The methods C<xdg_data_files()> and C<xdg_config_files()> are exported for
 backwards compatibility with version 0.02. They are identical to C<data_files()>
 and C<config_files()> respectively but without the C<wantarray> behavior.
 
-=head1 BUGS
-
-Please mail the author if you encounter any bugs.
-
-=head1 AUTHOR
-
-Jaap Karssenberg || Pardus [Larus] E<lt>pardus@cpan.orgE<gt>
-
-Copyright (c) 2003, 2007 Jaap G Karssenberg. All rights reserved.
-This program is free software; you can redistribute it and/or
-modify it under the same terms as Perl itself.
-
-Currently being maintained by Kim Ryan
-
-=head1 SEE ALSO
-
-L<http://www.freedesktop.org/wiki/Specifications/basedir-spec>
-
+=cut

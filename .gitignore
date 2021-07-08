@@ -1,7 +1,3 @@
-/Build
 /File-BaseDir-*
-/MYMETA.*
-/_build
-/blib
-*.bak
+/.build
 *.swp

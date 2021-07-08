@@ -13,6 +13,9 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      CIP_TAG: static
+
     steps:
       - uses: actions/checkout@v2
 
@@ -20,38 +23,6 @@ jobs:
         run: |
           curl -L https://raw.githubusercontent.com/uperl/cip/main/bin/github-bootstrap | bash
 
-      - name: Cache-Key
-        id: cache-key
-        run: |
-          echo -n '::set-output name=key::'
-          cip cache-key
-
-      - name: Cache CPAN modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.cip
-          key: ${{ runner.os }}-build-${{ steps.cache-key.outputs.key }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ steps.cache-key.outputs.key }}
-
-      - name: Start-Container
-        run: |
-          cip start
-
-      - name: Diagnostics
-        run: |
-          cip diag
-
-      - name: Install-Dependencies
-        run: |
-          cip install
-          cip exec cpanm -n Test::Pod Test::Pod::Coverage Test2::V0 Test2::Tools::PerlCritic
-
       - name: Build + Test
         run: |
-          cip exec prove -lvmr xt
-
-      - name: CPAN log
-        if: ${{ failure() }}
-        run: |
-          cip exec bash -c 'cat $HOME/.cpanm/latest-build/build.log'
+          cip script
