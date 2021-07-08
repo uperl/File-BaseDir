@@ -119,10 +119,10 @@ __END__
 
 =head1 SYNOPSIS
 
-  use File::BaseDir qw/xdg_data_files/;
-  for ( xdg_data_files('mime/globs') ) {
-    # do something
-  }
+ use File::BaseDir qw/xdg_data_files/;
+ for ( xdg_data_files('mime/globs') ) {
+   # do something
+ }
 
 =head1 DESCRIPTION
 
@@ -163,9 +163,9 @@ Use this when writing user specific application data.
 
 Example:
 
-  # data_home is: /home/USER/.local/share
-  $path = $bd->data_home('Foo', 'Bar', 'Baz');
-  # returns: /home/USER/.local/share/Foo/Bar/Baz
+ # data_home is: /home/USER/.local/share
+ $path = $bd->data_home('Foo', 'Bar', 'Baz');
+ # returns: /home/USER/.local/share/Foo/Bar/Baz
 
 =head2 data_dirs
 

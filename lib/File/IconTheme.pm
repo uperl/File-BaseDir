@@ -25,8 +25,8 @@ __END__
 
 =head1 SYNOPSIS
 
-    use File::IconTheme qw(xdg_icon_theme_search_dirs);
-    print join "\n", xdg_icon_theme_search_dirs;
+ use File::IconTheme qw(xdg_icon_theme_search_dirs);
+ print join "\n", xdg_icon_theme_search_dirs;
 
 =head1 DESCRIPTION
 
@@ -36,22 +36,18 @@ by the Freedesktop.org Icon Theme Specification. Currently only a tiny
 
 In case you want to B<store> an icon theme, use the directory returned by:
 
-    use File::BaseDir qw(data_dirs);
-    print scalar data_dirs('icons');
+ use File::BaseDir qw(data_dirs);
+ print scalar data_dirs('icons');
 
-=head1 INTERFACE
+=head1 FUNCTIONS
 
-=over
+Can be exported on request.
 
-=item C<xdg_icon_theme_search_dirs>
+=head2 xdg_icon_theme_search_dirs
+
+ my @dirs = xdg_icon_theme_search_dir;
 
 Returns a list of the base directories of icon themes.
-
-=back
-
-=head1 EXPORTS
-
-None by default, but the method can be exported on demand.
 
 =head1 CONFIGURATION AND ENVIRONMENT
 
