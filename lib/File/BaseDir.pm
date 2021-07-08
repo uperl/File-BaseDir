@@ -257,6 +257,7 @@ Default is F</usr/local/share>, F</usr/share>.
 
 =head2 xdg_config_home
 
+ # :var
  my $dir = xdg_config_home;
  my $dir = $bd->xdg_config_home;
 
@@ -265,6 +266,7 @@ Default is F<$HOME/.config>.
 
 =head2 xdg_config_dirs
 
+ # :var
  my @dirs = xdg_config_dirs;
  my @dirs = $bd->xdg_config_dirs;
 
@@ -273,6 +275,7 @@ Default is F</etc/xdg>.
 
 =head2 xdg_cache_home
 
+ # :var
  my $dir = xdg_cache_home;
  my $dir = $bd->xdg_cache_home;
 
