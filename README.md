@@ -167,6 +167,7 @@ Default is `/usr/local/share`, `/usr/share`.
 ## xdg\_config\_home
 
 ```perl
+# :var
 my $dir = xdg_config_home;
 my $dir = $bd->xdg_config_home;
 ```
@@ -177,6 +178,7 @@ Default is `$HOME/.config`.
 ## xdg\_config\_dirs
 
 ```perl
+# :var
 my @dirs = xdg_config_dirs;
 my @dirs = $bd->xdg_config_dirs;
 ```
@@ -187,6 +189,7 @@ Default is `/etc/xdg`.
 ## xdg\_cache\_home
 
 ```perl
+# :var
 my $dir = xdg_cache_home;
 my $dir = $bd->xdg_cache_home;
 ```
