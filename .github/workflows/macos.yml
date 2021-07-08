@@ -47,21 +47,17 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-build-${{ hashFiles('perlversion.txt') }}
 
-      - name: Install Dependencies
+      - name: Install Static Dependencies
         run: |
-          cpanm --installdeps .
+          cpanm -n Dist::Zilla
+          dzil authordeps --missing | cpanm -n
+          dzil listdeps --missing   | cpanm -n
 
-      - name: Configure
-        run: |
-          perl Build.PL
+      - name: Install Dynamic Dependencies
+        run: dzil run --no-build 'cpanm --installdeps .'
 
-      - name: Build
-        run: |
-          ./Build
-
-      - name: Test
-        run: |
-          ./Build test
+      - name: Run Tests
+        run: dzil test -v
 
       - name: CPAN log
         if: ${{ failure() }}

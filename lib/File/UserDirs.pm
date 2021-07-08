@@ -3,9 +3,11 @@ package File::UserDirs;
 use strict;
 use warnings;
 use IPC::System::Simple qw(capturex);
-use Exporter qw( import );
+use Exporter 5.57 qw( import );
 
-our $VERSION     = '0.08';
+# ABSTRACT: Find extra media and documents directories
+# VERSION
+
 our %EXPORT_TAGS = (
     all => [
         qw(xdg_desktop_dir xdg_documents_dir xdg_download_dir xdg_music_dir
@@ -33,14 +35,6 @@ sub xdg_videos_dir      {return _xdg_user_dir 'VIDEOS';}
 1;
 
 __END__
-
-=head1 NAME
-
-File::UserDirs - find extra media and documents directories
-
-=head1 VERSION
-
-This document describes File::UserDirs version C<0.04>.
 
 =head1 SYNOPSIS
 
@@ -141,5 +135,4 @@ This module requires the executable F<xdg-user-dir> from the package
 C<xdg-user-dirs>. Source code is available from
 L<http://cgit.freedesktop.org/xdg/xdg-user-dirs/>.
 
-=head1 SEE ALSO
-
+=cut

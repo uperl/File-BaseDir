@@ -4,9 +4,11 @@ use strict;
 use warnings;
 use File::BaseDir qw(data_dirs);
 use File::Spec;
-use Exporter qw( import );
+use Exporter 5.57 qw( import );
 
-our $VERSION   = '0.08';
+# ABSTRACT: Find icon directories
+# VERSION
+
 our @EXPORT_OK = qw(xdg_icon_theme_search_dirs);
 
 sub xdg_icon_theme_search_dirs {
@@ -20,14 +22,6 @@ sub xdg_icon_theme_search_dirs {
 1;
 
 __END__
-
-=head1 NAME
-
-File::IconTheme - find icon directories
-
-=head1 VERSION
-
-This document describes File::IconTheme.
 
 =head1 SYNOPSIS
 
@@ -66,3 +60,5 @@ C<$XDG_DATA_HOME>, C<$XDG_DATA_DIRS>
 =head1 SEE ALSO
 
 L<http://standards.freedesktop.org/icon-theme-spec/>
+
+=cut
