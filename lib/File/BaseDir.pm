@@ -137,31 +137,25 @@ This module forked from L<File::MimeInfo>.
 
 This module follows version 0.6 of BaseDir specification.
 
-=head1 EXPORT
+=head1 CONSTRUCTOR
 
-None by default, but all methods can be exported on demand.
-Also the groups ":lookup" and ":vars" are defined. The ":vars" group
-contains all routines with a "xdg_" prefix; the ":lookup" group
-contains the routines to locate files and directories.
+=head2 new
 
-=head1 METHODS
+ my $bd = File::BaseDir->new;
 
-=over 4
+Simple constructor to allow calling functions as object oriented methods.
 
-=item C<new()>
+=head1 FUNCTIONS
 
-Simple constructor to allow Object Oriented use of this module.
+None of these are exported by default, but all functions can be exported
+by request.  Also the groups C<:lookup> and C<:vars> are defined.  The
+C<:vars> group contains all the routines with a C<xdg_> prefix. The
+C<:lookup> group contains the routines to locate files and directories.
 
-=back
+=head2 data_home
 
-=head2 Lookup
-
-The following methods are used to lookup files and folders in one of the
-search paths.
-
-=over 4
-
-=item C<data_home(@PATH)>
+ my $path = data_home(@path);
+ my $path = $bd->data_home(@path);
 
 Takes a list of file path elements and returns a new path by appending
 them to the data home directory. The new path does not need to exist.
@@ -173,78 +167,117 @@ Example:
   $path = $bd->data_home('Foo', 'Bar', 'Baz');
   # returns: /home/USER/.local/share/Foo/Bar/Baz
 
-=item C<data_dirs(@PATH)>
+=head2 data_dirs
 
-Looks for directories specified by C<@PATH> in the data home and
+ # :lookup
+ my $dir = data_dirs(@path);
+ my $dir = $bd->data_dirs(@path);
+ my @dirs = data_dirs(@path);
+ my @dirs = $bd->data_dirs(@path);
+
+Looks for directories specified by C<@path> in the data home and
 other data directories. Returns (possibly empty) list of readable
 directories. In scalar context only the first directory found is
 returned. Use this to lookup application data.
 
-=item C<data_files(@PATH)>
+=head2 data_files
 
-Looks for files specified by C<@PATH> in the data home and other data
+ # :lookup
+ my $file = data_files(@path);
+ my $file = $bd->data_files(@path);
+ my @files = data_files(@path);
+ my @files = $bd->data_files(@path);
+
+Looks for files specified by C<@path> in the data home and other data
 directories. Only returns files that are readable. In scalar context only
 the first file found is returned. Use this to lookup application data.
 
-=item C<config_home(@PATH)>
+=head2 config_home
+
+ # :lookup
+ my $dir = config_home(@path);
+ my $dir = $bd->config_home(@path);
 
 Takes a list of path elements and appends them to the config home
 directory returning a new path. The new path does not need to exist.
 Use this when writing user specific configuration.
 
-=item C<config_dirs(@PATH)>
+=head2 config_dirs
 
-Looks for directories specified by C<@PATH> in the config home and
+ # :lookup
+ my $dir = config_dirs(@path);
+ my $dir = $bd->config_dirs(@path);
+ my @dirs = config_dirs(@path);
+ my @dirs = $bd->config_dirs(@path);
+
+Looks for directories specified by C<@path> in the config home and
 other config directories. Returns (possibly empty) list of readable
 directories. In scalar context only the first directory found is
 returned. Use this to lookup configuration.
 
-=item C<config_files(@PATH)>
+=head2 config_files
 
-Looks for files specified by C<@PATH> in the config home and other
+ # :lookup
+ my $file = config_files(@path);
+ my $file = $bd->config_files(@path);
+ my @files = config_files(@path);
+ my @files = $bd->config_files(@path);
+
+Looks for files specified by C<@path> in the config home and other
 config directories. Returns a (possibly empty) list of files that
 are readable. In scalar context only the first file found is returned.
 Use this to lookup configuration.
 
-=item C<cache_home(@PATH)>
+=head2 cache_home
+
+ # :lookup
+ my $dir = cache_home(@path);
+ my $dir = $bd->cache_home(@path);
 
 Takes a list of path elements and appends them to the cache home
 directory returning a new path. The new path does not need to exist.
 
-=back
+=head2 xdg_data_home
 
-=head2 Variables
-
-The following methods only returns the value of one of the XDG variables.
-
-=over 4
-
-=item C<xdg_data_home>
+ # :var
+ my $dir = xdg_data_home;
+ my $dir = $bd->xdg_data_home;
 
 Returns either C<$ENV{XDG_DATA_HOME}> or it's default value.
 Default is F<$HOME/.local/share>.
 
-=item C<xdg_data_dirs>
+=head2 xdg_data_dirs
+
+ # :var
+ my @dirs = xdg_data_dirs;
+ my @dirs = $bd->xdg_data_dirs;
 
 Returns either C<$ENV{XDG_DATA_DIRS}> or it's default value as list.
 Default is F</usr/local/share>, F</usr/share>.
 
-=item C<xdg_config_home>
+=head2 xdg_config_home
+
+ my $dir = xdg_config_home;
+ my $dir = $bd->xdg_config_home;
 
 Returns either C<$ENV{XDG_CONFIG_HOME}> or it's default value.
 Default is F<$HOME/.config>.
 
-=item C<xdg_config_dirs>
+=head2 xdg_config_dirs
+
+ my @dirs = xdg_config_dirs;
+ my @dirs = $bd->xdg_config_dirs;
 
 Returns either C<$ENV{XDG_CONFIG_DIRS}> or it's default value as list.
 Default is F</etc/xdg>.
 
-=item C<xdg_cache_home>
+=head2 xdg_cache_home
+
+ my $dir = xdg_cache_home;
+ my $dir = $bd->xdg_cache_home;
 
 Returns either C<$ENV{XDG_CACHE_HOME}> or it's default value.
 Default is F<$HOME/.cache>.
-
-=back
 
 =head1 NON-UNIX PLATFORMS
 
