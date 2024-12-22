@@ -1,3 +1,5 @@
 /File-BaseDir-*
 /.build
 *.swp
+*.old
+*.orig
